@@ -1,15 +1,32 @@
+import { useEffect, useState } from 'react';
+import { doc, onSnapshot } from 'firebase/firestore';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import { useAuth } from '@/utils/firebaseHelpers/authContext';
 import { signOutUser } from '@/utils/firebaseHelpers/firebaseAuth';
-
+import { db } from '@/firebaseConfig';
 import GoogleLogin from '@/components/GoogleLogin';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const { user } = useAuth();
+  const [loginCount, setLoginCount] = useState(0);
+
+  useEffect(() => {
+    if (user) {
+      const userDocRef = doc(db, 'users', user.email);
+      const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
+        if (docSnap.exists()) {
+          setLoginCount(docSnap.data().loginCount);
+        }
+      });
+
+      // Clean up subscription on unmount
+      return () => unsubscribe();
+    }
+  }, [user]);
 
   if (user === undefined) {
     return <div>Loading...</div>;
@@ -44,7 +61,11 @@ export default function Home() {
             </div>
           </div>
 
-          <h3>Hi {user.displayName}, welcome to my app 👋 your email is {user.email}</h3>
+          <h3>
+            Hi {user.displayName}, welcome to my app 👋 your email is{' '}
+            {user.email}
+          </h3>
+          <p>Your login count: {loginCount}</p>
           <div className={styles.center}>
             <Image
               className={styles.logo}
