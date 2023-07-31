@@ -7,7 +7,7 @@ This project is a simple starter for creating a web app with Next.js, Firestore,
 ### 1. Clone this repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git clone https://github.com/CleverProgrammer/next-firebase-starter-qazi
 ```
 
 ### 2. Install the dependencies:
