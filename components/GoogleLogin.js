@@ -6,8 +6,8 @@ import Image from 'next/image';
 const GoogleLogin = () => {
   return (
     <div className={styles.loginContainer}>
-      <h1>GetClips.ai</h1>
-      <p>Turn your long-form videos into shorts, reels, and tiktoks 🚀</p>
+      <h1>Next JS + Firebase Starter 🚀</h1>
+<p>This app shows you how to use next js + firebase auth + firestore</p>
       <button className={styles.googleButton} onClick={googleSignIn}>
         <Image
           src='/images/google-icon.png'

@@ -44,8 +44,7 @@ export default function Home() {
             </div>
           </div>
 
-          <h3>Welcome to my app 👋</h3>
-
+          <h3>Hi {user.displayName}, welcome to my app 👋 your email is {user.email}</h3>
           <div className={styles.center}>
             <Image
               className={styles.logo}

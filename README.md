@@ -1,31 +1,56 @@
-# GetClips.ai
+# Next.js + Firestore Starter 🚀
 
-[NextFirebaseStarter.ai](https://getclips.ai) is a simple app that allows you to get up & running with firebase + next + auth
+This project is a simple starter for creating a web app with Next.js, Firestore, and Firebase Authentication. It features user authentication and Google Login component, with support for loading and error states.
 
-## Tech Stack
+## Local Setup
 
-- Next.js
-- Firebase Auth + Firestore
+### 1. Clone this repository:
 
-## Setup Instructions
-
-### 1. Clone the repository:
-bash
-`git clone https://github.com/yourusername/getclips.ai.git`
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+```
 
 ### 2. Install the dependencies:
-`yarn`
+```bash
+yarn install
+```
 
-### 3. Setup the Firebase:
-- Create a new Firebase project.
-- Create a Firestore database.
-- Setup authentication in Firebase and enable Google as a provider.
-- Add your domain to the authorized domains in Firebase authentication settings. This step is only required for production, not for local development.
+### 3. Setup firebase
 
-### 4. Setup environment variables:
-- Copy the .env.example file to a new file named .env.local.
-- Fill the .env.local file with your actual Firebase credentials and other settings.
-- You can find these values in your Firebase project settings.
+1. Create a Firebase project from the Firebase console.
 
-### 5. Run the project:
-- yarn dev
+2. Enable Google sign-in provider in the Authentication section of your Firebase project.
+
+3. Create a Firestore database in your Firebase project.
+
+4. Generate a new private key file for your service account in Firebase project settings.
+
+5. Rename .env.example to .env.local and replace the placeholder values with your Firebase config values:
+
+```bash
+NODE_ENV="development"
+NEXT_PUBLIC_API_KEY="YOUR_API_KEY"
+NEXT_PUBLIC_AUTH_DOMAIN="YOUR_AUTH_DOMAIN"
+NEXT_PUBLIC_PROJECT_ID="YOUR_PROJECT_ID"
+NEXT_PUBLIC_STORAGE_BUCKET="YOUR_STORAGE_BUCKET"
+NEXT_PUBLIC_MESSAGING_SENDER_ID="YOUR_MESSAGING_SENDER_ID"
+NEXT_PUBLIC_APP_ID="YOUR_APP_ID"
+NEXT_PUBLIC_MEASUREMENT_ID="YOUR_MEASUREMENT_ID"
+```
+
+### 4. Start the local development server:
+`yarn dev`
+
+Your app should now be running on http://localhost:3000
+
+### Deploying on Vercel
+1. Create a new project on Vercel and import your repository.
+
+2. During the import process, Vercel will ask for environment variables. Make sure to provide the same values you used in your .env.local file.
+
+3. Deploy the project.
+
+4. In Firebase console, in the Authentication settings, add the Vercel deployment URL to the authorized domains list.
+
+License
+This project is open source and available under the MIT License.
